@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdDelete } from "react-icons/md";
 import "../components/reacStyle.css";
 import { Button } from "react-bootstrap";
@@ -19,7 +19,7 @@ export const AgentNode = ({ data, id }) => {
 
   const { showPopup, webrtc, employeeId, name, phoneNumber, email } = agentData;
 
-  useState(() => {
+  useEffect(() => {
     if (data?.agentData) {
       setAgentData(data.agentData);
     }

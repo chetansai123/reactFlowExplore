@@ -1,8 +1,15 @@
 import React from "react";
-import ListGroup from "react-bootstrap/ListGroup";
+import {
+  MdPhoneCallback,
+  MdAudioFile,
+  MdDialpad,
+  MdSupportAgent,
+  MdCallEnd,
+  MdGroups,
+} from "react-icons/md";
 import { nodeTypes } from "../components/register.jsx";
-
 import "../components/styles.css";
+
 const Sidebar = () => {
   const onDragStart = (event, nodeType, nodeLabel) => {
     event.dataTransfer.setData("application/reactflow/type", nodeType);
@@ -12,79 +19,64 @@ const Sidebar = () => {
 
   return (
     <div className="full">
-      <div className="description">
-        You can drag these nodes to the pane on the right.
-      </div>
-      <div>
-        <ListGroup variant="flush">
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "startCall", "start call")
-            }
-            draggable
-          >
-            Start Call
-          </ListGroup.Item>
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "answerCall", "answer call")
-            }
-            draggable
-          >
-            Answer Call
-          </ListGroup.Item>
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "complexNode", "Gather DTMF")
-            }
-            draggable
-          >
-            Gather DTMF
-          </ListGroup.Item>
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "audioNode", "Play Audio Node")
-            }
-            draggable
-          >
-            Play Audio Node
-          </ListGroup.Item>
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "answerCall", "end call")
-            }
-            draggable
-          >
-            End Call
-          </ListGroup.Item>
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "agentNode", "Agent Data")
-            }
-            draggable
-          >
-            Agent Node
-          </ListGroup.Item>
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "autoAttendant", "Attendant Data")
-            }
-            draggable
-          >
-            Auto Attendant Node
-          </ListGroup.Item>
-          <ListGroup.Item
-            onDragStart={(event) =>
-              onDragStart(event, "groupNode", "Add Group")
-            }
-            draggable
-          >
-            Group Node
-          </ListGroup.Item>
-        </ListGroup>
+      <div className="list">
+        <div
+          onDragStart={(event) => onDragStart(event, "startCall", "Start")}
+          draggable
+          className="s-icon1 s-icon1-start"
+        >
+          <MdPhoneCallback className="icon" />
+          <span>Start</span>
+        </div>
+        <div
+          onDragStart={(event) =>
+            onDragStart(event, "audioNode", "Play Audio Node")
+          }
+          draggable
+          className="s-icon1 s-icon1-audio"
+        >
+          <MdAudioFile className="icon" />
+          <span>Audio</span>
+        </div>
+        <div
+          onDragStart={(event) =>
+            onDragStart(event, "complexNode", "Gather DTMF")
+          }
+          draggable
+          className="s-icon1 s-icon1-menu"
+        >
+          <MdDialpad className="icon" />
+          <span>Menu</span>
+        </div>
+        <div
+          onDragStart={(event) => onDragStart(event, "agentNode", "Agent Data")}
+          draggable
+          className="s-icon1 s-icon1-agent"
+        >
+          <MdSupportAgent className="icon" />
+          <span>Agent</span>
+        </div>
+        <div
+          onDragStart={(event) => onDragStart(event, "groupNode", "Add Group")}
+          draggable
+          className="s-icon1 s-icon1-group"
+        >
+          <MdGroups className="icon" />
+          <span>Group</span>
+        </div>
+        <div
+          onDragStart={(event) => onDragStart(event, "answerCall", "End Call")}
+          draggable
+          className="s-icon1 s-icon1-end"
+        >
+          <MdCallEnd className="icon" />
+          <span>End</span>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Sidebar;
+
+//auto-attendant and answer call node removed- for new sidebar design.
